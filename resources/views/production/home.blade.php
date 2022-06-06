@@ -12,9 +12,6 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-     
-
-
         <div class="widget_summary">
           <div class="w_left w_25">
             <h2>GCASH </h2>

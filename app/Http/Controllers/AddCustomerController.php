@@ -18,14 +18,20 @@ class AddCustomerController extends Controller
     {
         
         $customers = addCustomer::where('customer_id', $request->id)
-		->orderBy('id', 'DESC')
-		->first();
+        ->orderBy('id', 'DESC')
+        ->first();
 
-       
-        $total = $customers->totals;
+        if($customers == NULL){
+        return redirect('/customer/load'); // Why created statement?, to avoid getting value to add latest total property because it's a NULL
+        }else{
+          $total = $customers->totals;
+     
+        }
+  
 
-
+      
         switch ($request->option) {
+
             case "debt":
                 $update = $total + $request->amount;
               break;
@@ -55,7 +61,7 @@ class AddCustomerController extends Controller
     {
 
         $customers = customer::all();   
-     
+        
         return view('production.addCustomer')->with('name', $customers);
        
     }
@@ -64,8 +70,7 @@ class AddCustomerController extends Controller
     {
 
         $customers = addCustomer::
-        join('customers', 'customers.id', '=', 'add_customers.customer_id')
-        ->where('customer_id', $id)
+        where('customer_id', $id)
         ->get();
          
 

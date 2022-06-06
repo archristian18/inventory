@@ -9,11 +9,15 @@
                         <th style="width: 1%">#</th>
                         <th style="width: 20%">Load</th>
                         <th>Transaction Options</th>
-                        <th>Total Balance</th>
+                        <th>Total Balance Debt</th>
                         <th>Method</th>
+                        <th>Date</th>
+                        <th>Edit</th>
                       </tr>
                     </thead>
                     <tbody>
+
+                    @if($list !== 0)
                       @foreach($list as $item) 
                       <tr>
                         
@@ -34,11 +38,18 @@
 
                         <td>
                           <h5>{{ $item->method }}</h5>
-                         
+                        </td>
+                        <td>
+                          <h5>{{ $item->created_at->toDateString(); }}</h5>
+                        </td>
+                        <td>
+                          <a href="{{ route('deleteRecords', $item->id)}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                         </td>
 
                       </tr>
-                       @endforeach
+                      @endforeach
+                    @endif
+                    
                     </tbody>
                   </table>
                   <!-- end project list -->

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\customer;
 use App\Models\addCustomer;
 use Illuminate\Support\Facades\DB;
+
+
 class CustomerController extends Controller
 {
     /**
@@ -20,7 +22,8 @@ class CustomerController extends Controller
 
     public function home()
     {
-        return view('production.home');
+        
+       return view('production.home');
     }
 
     
@@ -28,52 +31,27 @@ class CustomerController extends Controller
     {
 
         $customers = customer::all();
+        
+        $data = $customers;
+
+        // foreach ($customers as $data) {
+
+        // $id  = $data->id;
        
-        if($customers !== 0){
-            return $this->viewCustomer();
-            
-        }
-        else{
-            $sample= 0;
-            return view('production.viewCustomer')->with('list', $sample);;
-            
-        }
-   
-             
+        // $sample= addCustomer::
+        // join('customers', 'customers.id', '=', 'add_customers.customer_id')
+        // ->where('customer_id', '=', $id)
+        // ->orderBy('add_customers.id', 'DESC')
+        // ->get();
+      
+        
+        // return view('production.viewCustomer')->with('list', $sample);
+        // }
+
+        return view('production.viewCustomer')->with('list', $data);
     }
 
 
-
-    public function viewCustomer()
-    {
-
-        $customers = customer::all();
-   
-        foreach ($customers as $data) {
-
-        $id  = $data->id;
-     
-        $sample[] = addCustomer::
-        join('customers', 'customers.id', '=', 'add_customers.customer_id')
-        ->where('customer_id', '=', $id)
-        ->orderBy('add_customers.id', 'DESC')
-        ->first();
-
-        }
-
-       return view('production.viewCustomer')->with('list', $sample);
-             
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -84,7 +62,18 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
        
+        $validated = $request->validate([
+            'firstname' => 'required | regex:(^[a-zA-Z]+$) | unique:customers',
+            'lastname' => 'required | regex:(^[a-zA-Z]+$)',
+            'amount' => 'required | regex:(^[0-9]+$)',  
+            'option' => 'required | regex:(^[a-zA-Z]+$)',  
+            'methods' => 'required | regex:(^[a-zA-Z]+$)', 
+            'details' => 'required | regex:(^[a-zA-Z]+$)'
  
+        ]);
+   
+        
+
         $options = $request['option'];
 
         if($options == 'debt'){
@@ -118,16 +107,6 @@ class CustomerController extends Controller
         return view('production.customer');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     public function total()
     {
@@ -139,39 +118,8 @@ class CustomerController extends Controller
             'totals' => $request,
             'customer_id' => $id->id
           ]);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

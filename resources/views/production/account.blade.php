@@ -25,22 +25,22 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="">
-
+                <form id="demo-form2" action="{{ route('account.create') }}" data-parsley-validate class="form-horizontal form-label-left" method="post">
+                    {!! csrf_field() !!}
+                    
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">GCASH<span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">GCASH<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="amount" name="amount" required="required" class="form-control">
+                            <input type="text" id="gcash" name="gcash" required="required" class="form-control">
                         </div>
                     </div>
 
-
                     <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">LOAD WALLET<span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">LOAD WALLET<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <input type="text" id="amount" name="amount" required="required" class="form-control">
+                            <input type="text" id="wallet" name="wallet" required="required" class="form-control">
                         </div>
                     </div>
                   

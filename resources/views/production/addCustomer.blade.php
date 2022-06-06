@@ -33,13 +33,21 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="option">Customer Name<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                            <select class="form-control" name="id">
 
-                                @foreach($name as $item)
-                                <option value="{{ $item->id }}">{{ $item->firstname }}</option>
-                                @endforeach
-                                    
-                            </select>
+
+                                <select class="form-control" name="id">
+
+                                    <option value="">Option</option> 
+
+                                    @foreach($name as $item)
+
+                                    <option value="{{ $item->id }}">{{ $item->firstname }}</option>
+
+                                    @endforeach
+                                        
+                                </select>
+                      
+
                         </div>
                     </div>
 
@@ -89,12 +97,5 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
 @endsection
+

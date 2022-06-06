@@ -15,28 +15,31 @@
                       </tr>
                     </thead>
                     <tbody>
-                    
+                    @foreach($list as $item) 
                       <tr>
-                        <td>#</td>
+                        
+                        <td>{{ $item->iteration }}</td>
 
-                        <td><h5>200</h5>
-                        </td>
-
-                        <td><h5>100</h5>
+                        <td>
+                          <h5>{{ $item->gcash }}</h5>
                         </td>
 
                         <td>
-                         <h5>6/2/2022</h5>
-                        </td>  
+                          <h5>{{ $item->loads }}</h5>
+                        </td>
+                       
+                        <td>
+                          <h5>{{ $item->created_at->toDateString(); }}</h5>
+                        </td>
+
 
                         <td>
-                          <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                          <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                          <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                          <a href="{{ route('deleteAccount', $item->id)}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                         </td>
 
                       </tr>
-                      @endforeach
+                    @endforeach
+                  
                     </tbody>
                   </table>
                   <!-- end project list -->

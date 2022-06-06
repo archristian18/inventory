@@ -11,7 +11,5 @@ class addCustomer extends Model
 
     protected $fillable = ['loads', 'options', 'method', 'totals', 'customer_id'];
 
-
-
     
 }

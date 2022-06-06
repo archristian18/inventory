@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\addCustomer;
 
 class RecordController extends Controller
 {
@@ -79,6 +80,8 @@ class RecordController extends Controller
      */
     public function destroy($id)
     {
-        //
+      
+        addCustomer::destroy($id);
+        return redirect('/view');  
     }
 }
