@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('total_accounts', function (Blueprint $table) {
+        Schema::create('logins', function (Blueprint $table) {
             $table->id();
-            $table->decimal('gcash', 8,2);
-            $table->decimal('loads', 8,2);
             $table->timestamps();
         });
     }
@@ -26,9 +24,8 @@ return new class extends Migration
      *
      * @return void
      */
-
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists('logins');
     }
 };

@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AddCustomerController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,14 @@ ROUTE::get('/account/delete{id}', [AccountController::class, 'destroy'])->name('
 
 
 ROUTE::get('/customer/delete{id}', [RecordController::class, 'destroy'])->name('deleteRecords');
+
+
+// ROUTE::get('/login', [RegisterController::class, 'login']);
+ROUTE::get('/login', [RegistrationController::class, 'login'])->name('login.page');
+ROUTE::get('/register', [RegistrationController::class, 'register'])->name('create.register');
+ROUTE::post('/register/store', [RegistrationController::class, 'store'])->name('register');
+ROUTE::get('/registration', [RegistrationController::class, 'data']);
+
 
 
 

@@ -28,8 +28,6 @@ class AddCustomerController extends Controller
      
         }
   
-
-      
         switch ($request->option) {
 
             case "debt":
@@ -68,7 +66,11 @@ class AddCustomerController extends Controller
     
     public function records($id)
     {
+      // $customers = addCustomer::find(1);
+      // echo $id;
+      // $customers->addCustomer->firstname;
 
+      // echo $customers;
         $customers = addCustomer::
         where('customer_id', $id)
         ->get();

@@ -10,6 +10,10 @@ class addCustomer extends Model
     use HasFactory;
 
     protected $fillable = ['loads', 'options', 'method', 'totals', 'customer_id'];
-
+    
+    // public function addCustomer()
+    // {
+    //     return $this->belongsTo(Customer::class);
+    // }
     
 }
